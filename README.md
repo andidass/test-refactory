@@ -1,7 +1,6 @@
-# test-refactory
+## Test Refactory Fullstack Js by Andi Ardhian
 
-Jawaban Soal Test Bootcamp Refactory by Andi Ardhian
-Soal Fullstack Js
+Jawaban Soal Test Bootcamp Refactory
 
 ### Folder Logic Test `./refactory-test/Logic \Test`
 ### Folder JSON Manipulation `./refactory-test/src/JSON \Manipulation`

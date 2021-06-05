@@ -163,7 +163,7 @@ export default function Login() {
             </div>
             <Link to="./register">
               <Linkes variant="body2">
-                {"Belum memiliki akun? Registrasi"}
+                {"Have no account? Register here"}
               </Linkes>
             </Link>
           </form>

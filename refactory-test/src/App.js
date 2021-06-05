@@ -1,26 +1,24 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Soal1 from "./JSON Manipulation/Soal1";
-import Soal2 from "./JSON Manipulation/Soal2";
-import Soal3 from "./JSON Manipulation/Soal3";
-import Soal4 from "./JSON Manipulation/Soal4";
-import Soal5 from "./JSON Manipulation/Soal5";
+import AllJawaban from "./JSON Manipulation/AllJawaban";
+import MainPage from "./FullStackJs/MainPage";
+import Login from "./FullStackJs/Login";
+import Register from "./FullStackJs/Register";
 import "./App.css";
 
 function App() {
   return (
     <Fragment>
-      <Soal1 />
-      <Soal2 />
-      <Soal3 />
-      <Soal4 />
-      <Soal5 />
+      {/* <AllJawaban /> */}
+      <Router>
+        <Switch>
+          <Route path="/" exact component={MainPage} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/register" exact component={Register} />
+          <Route path="/soal-json-manipulation" exact component={AllJawaban} />
+        </Switch>
+      </Router>
     </Fragment>
-    // <Router>
-    //   <Switch>
-    //     <Route path="/" exact component={Soal1} />
-    //   </Switch>
-    // </Router>
   );
 }
 

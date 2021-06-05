@@ -8,17 +8,18 @@ import "./App.css";
 
 function App() {
   return (
-    <Fragment>
+    <div className="App">
       {/* <AllJawaban /> */}
       <Router>
         <Switch>
-          <Route path="/" exact component={MainPage} />
+          {/* <Route path="/" exact component={MainPage} /> */}
+          <Route path="/" exact component={Login} />
           <Route path="/login" exact component={Login} />
           <Route path="/register" exact component={Register} />
           <Route path="/soal-json-manipulation" exact component={AllJawaban} />
         </Switch>
       </Router>
-    </Fragment>
+    </div>
   );
 }
 

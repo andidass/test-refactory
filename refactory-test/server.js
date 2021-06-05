@@ -15,6 +15,8 @@ app.get("/", (req, res) => res.send("API Running"));
 // pos
 app.use("/login", require("./Routes/api/auth"));
 app.use("/registration", require("./Routes/api/user"));
+app.use("/registration/facebook", require("./Routes/api/userFacebook"));
+app.use("/registration/google", require("./Routes/api/userGoogle"));
 
 const PORT = process.env.PORT || 5000;
 

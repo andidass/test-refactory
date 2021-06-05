@@ -47,26 +47,70 @@ const Register = ({ register }) => {
     type: "",
   });
 
-  const responseFacebook = (response) => {
-    console.log(response);
-    setAccount({
-      auth: true,
-      name: response.name,
-      picture: response.picture.data.url,
-      email: response.email,
-      type: "facebook",
-    });
+  const responseFacebook = async (response) => {
+    // console.log(response);
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const body = JSON.stringify({
+        email: response.email,
+      });
+      const res = await axios.post("/registration/google", body, config);
+      // console.log(res.data); //--> token
+      setAuthToken(res.data.token);
+      const res2 = await axios.get("/login");
+      setAccount({
+        auth: true,
+        name: response.name,
+        picture: response.picture.data.url,
+        email: response.email,
+        type: "facebook",
+      });
+      {
+        window.alert("Register success");
+      }
+    } catch (err) {
+      const errors = err.response.data.errors;
+      if (errors) {
+        errors.forEach((error) => window.alert(error.msg));
+      }
+    }
   };
 
-  const responseGoogle = (response) => {
-    console.log(response);
-    setAccount({
-      auth: true,
-      name: response.Ft.Ve,
-      picture: response.profileObj.imageUrl,
-      email: response.profileObj.email,
-      type: "google",
-    });
+  const responseGoogle = async (response) => {
+    // console.log(response);
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const body = JSON.stringify({
+        email: response.profileObj.email,
+      });
+      const res = await axios.post("/registration/google", body, config);
+      // console.log(res.data); //--> token
+      setAuthToken(res.data.token);
+      const res2 = await axios.get("/login");
+      setAccount({
+        auth: true,
+        name: response.Ft.Ve,
+        picture: response.profileObj.imageUrl,
+        email: response.profileObj.email,
+        type: "google",
+      });
+      {
+        window.alert("Register success");
+      }
+    } catch (err) {
+      const errors = err.response.data.errors;
+      if (errors) {
+        errors.forEach((error) => window.alert(error.msg));
+      }
+    }
   };
 
   const componentClicked = () => {
@@ -109,7 +153,6 @@ const Register = ({ register }) => {
           window.alert("Register success");
         }
       } catch (err) {
-        // console.error(err.response.data);
         const errors = err.response.data.errors;
         if (errors) {
           errors.forEach((error) => window.alert(error.msg));

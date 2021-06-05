@@ -199,6 +199,7 @@ const Login = () => {
   );
   const Authenticated = (
     <Fragment>
+      <h1>Welcome</h1>
       <img src={account.picture} />
       <div>{account.name}</div>
       <div>{account.email}</div>

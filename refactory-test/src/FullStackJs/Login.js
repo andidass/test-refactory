@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
 
@@ -27,7 +27,8 @@ export default function Login() {
     setAccount({
       auth: true,
       name: response.profileObj.givenName,
-      pictures: response.profileObj.imageUrl,
+      picture: response.profileObj.imageUrl,
+      email: response.profileObj.email,
       type: "google",
     });
   };
@@ -35,8 +36,9 @@ export default function Login() {
   const componentClicked = () => {
     console.log("button clicked!");
   };
-  return (
-    <>
+
+  const LoginForm = (
+    <Fragment>
       <div>LOGIN</div>
       <div>{account.name}</div>
       <GoogleLogin
@@ -54,6 +56,14 @@ export default function Login() {
         onClick={componentClicked}
         callback={responseFacebook}
       />
-    </>
+    </Fragment>
   );
+  const Authenticated = (
+    <Fragment>
+      <img src={account.picture} />
+      <div>{account.name}</div>
+      <div>{account.email}</div>
+    </Fragment>
+  );
+  return <div>{account.auth ? Authenticated : LoginForm}</div>;
 }

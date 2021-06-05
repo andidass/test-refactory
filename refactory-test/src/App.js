@@ -9,10 +9,9 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      {/* <AllJawaban /> */}
       <Router>
         <Switch>
-          {/* <Route path="/" exact component={MainPage} /> */}
+          <Route path="/main-page" exact component={MainPage} />
           <Route path="/" exact component={Login} />
           <Route path="/login" exact component={Login} />
           <Route path="/register" exact component={Register} />

@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import setAuthToken from "../utils/setTokenAuth";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
 import {
@@ -8,7 +10,6 @@ import {
   CssBaseline,
   TextField,
   Link as Linkes,
-  Grid,
   Typography,
   Container,
 } from "@material-ui/core";
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login() {
+const Login = () => {
   const classes = useStyles();
   const [account, setAccount] = useState({
     auth: null,
@@ -84,9 +85,34 @@ export default function Login() {
   const onChange = (e) =>
     setFormLogin({ ...formLogin, [e.target.name]: e.target.value });
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     console.log("submit");
+    // login(email, password);
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const body = JSON.stringify({ email, password });
+      const res = await axios.post("/login", body, config);
+      // console.log(res.data) // --> token;
+      setAuthToken(res.data.token);
+      const res2 = await axios.get("/login");
+      console.log(res2.data);
+      setAccount({
+        auth: true,
+        email: res2.data.email,
+      });
+      window.alert("Login success");
+    } catch (err) {
+      // console.error(err.response.data);
+      const errors = err.response.data.errors;
+      if (errors) {
+        errors.forEach((error) => window.alert(error.msg));
+      }
+    }
   };
 
   const LoginForm = (
@@ -179,4 +205,6 @@ export default function Login() {
     </Fragment>
   );
   return <div>{account.auth ? Authenticated : LoginForm}</div>;
-}
+};
+
+export default Login;

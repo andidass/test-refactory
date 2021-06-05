@@ -13,8 +13,8 @@ const User = require("../../Model/Account");
 router.post(
   "/",
   [
-    check("email", "email harus diisi").not().isEmpty(),
-    check("password", "password harus berisi minimal 6 karakter").isLength({
+    check("email", "email doesn't valid").isEmail(),
+    check("password", "Password must be contain min 6 caracter").isLength({
       min: 6,
     }),
   ],
@@ -54,7 +54,7 @@ router.post(
       await user.save();
 
       // return jsonwebtoken for access protected route
-      res.send("account registered");
+      // res.send("account registered");
       const payload = {
         user: {
           id: user.id,

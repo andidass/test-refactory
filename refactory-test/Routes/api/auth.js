@@ -28,8 +28,8 @@ router.get("/", auth, async (req, res) => {
 router.post(
   "/",
   [
-    check("email", "Email harus diisi").isEmail(),
-    check("password", "Password harus berisi minimal 6 karakter").isLength({
+    check("email", "Email doesn't valid").isEmail(),
+    check("password", "Password must be contain min 6 caracter").isLength({
       min: 6,
     }),
   ],

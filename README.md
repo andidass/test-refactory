@@ -11,7 +11,7 @@ running project in `http://localhost:3000/soal-json-manipulatin` <br />
 running project in `http://localhost:3000` <br />
 
 <br />
-Instruction
+
 ### `npm start`
 Runs front app in the development mode.<br />
 

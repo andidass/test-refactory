@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AllJawaban from "./JSON Manipulation/AllJawaban";
-import MainPage from "./FullStackJs/MainPage";
 import Login from "./FullStackJs/Login";
 import Register from "./FullStackJs/Register";
 import "./App.css";
@@ -11,7 +10,6 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/main-page" exact component={MainPage} />
           <Route path="/" exact component={Login} />
           <Route path="/login" exact component={Login} />
           <Route path="/register" exact component={Register} />

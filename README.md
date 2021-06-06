@@ -2,9 +2,13 @@
 
 Jawaban Soal Test Bootcamp Refactory
 
-### Folder Logic Test `./refactory-test/Logic \Test`
-### Folder JSON Manipulation `./refactory-test/src/JSON \Manipulation`
-### Folder Fullstack Js `./refactory-test/src/FullStackJs`
+### Folder Logic Test <br />`./refactory-test/Logic \Test`
+<br />
+### Folder JSON Manipulation <br/>`./refactory-test/src/JSON \Manipulation`
+running project in `http://localhost:3000/soal-json-manipulation` <br />
+
+### Folder Fullstack Js <br /> `./refactory-test/src/FullStackJs`
+running project in `http://localhost:3000` <br />
 
 ### `npm start`
 Runs front app in the development mode.<br />

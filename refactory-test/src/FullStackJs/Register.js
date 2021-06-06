@@ -11,6 +11,7 @@ import {
   TextField,
   Typography,
   Container,
+  Paper,
   Link as Linkes,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -56,12 +57,15 @@ const Register = ({ register }) => {
         },
       };
       const body = JSON.stringify({
+        name: response.name,
+        picture: response.picture.data.url,
         email: response.email,
       });
       const res = await axios.post("/registration/google", body, config);
       // console.log(res.data); //--> token
       setAuthToken(res.data.token);
       const res2 = await axios.get("/login");
+      console.log("res2", res2.data);
       setAccount({
         auth: true,
         name: response.name,
@@ -89,10 +93,12 @@ const Register = ({ register }) => {
         },
       };
       const body = JSON.stringify({
+        name: response.Ft.Ve,
+        picture: response.profileObj.imageUrl,
         email: response.profileObj.email,
       });
       const res = await axios.post("/registration/google", body, config);
-      // console.log(res.data); //--> token
+      // console.log("res1", res); //--> token
       setAuthToken(res.data.token);
       const res2 = await axios.get("/login");
       setAccount({
@@ -280,9 +286,30 @@ const Register = ({ register }) => {
   );
   const Authenticated = (
     <Fragment>
-      <img src={account.picture} />
-      <div>{account.name}</div>
-      <div>{account.email}</div>
+      <Paper
+        variant="outlined"
+        style={{
+          margin: `5%`,
+          width: "90vw",
+          backgroundColor: "#F4F6F6",
+          height: "90vh",
+        }}
+      >
+        <div style={{ marginTop: `5%` }}>
+          <Avatar
+            alt={account.name}
+            src={account.picture}
+            style={{ display: "inline-flex", width: `15%`, height: `15%` }}
+          />
+          <Typography variant="h6">
+            Hallo, <b> {account.name && account.name} </b>
+          </Typography>
+          <Typography variant="subtitle1">
+            Selamat datang di website kami
+          </Typography>
+          <Typography variant="subtitle1">{account.email}</Typography>
+        </div>
+      </Paper>
     </Fragment>
   );
 

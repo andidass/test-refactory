@@ -12,6 +12,7 @@ import {
   Link as Linkes,
   Typography,
   Container,
+  Paper,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -199,10 +200,30 @@ const Login = () => {
   );
   const Authenticated = (
     <Fragment>
-      <h1>Welcome</h1>
-      <img src={account.picture} />
-      <div>{account.name}</div>
-      <div>{account.email}</div>
+      <Paper
+        variant="outlined"
+        style={{
+          margin: `5%`,
+          width: "90vw",
+          backgroundColor: "#F4F6F6",
+          height: "90vh",
+        }}
+      >
+        <div style={{ marginTop: `5%` }}>
+          <Avatar
+            alt={account.name}
+            src={account.picture}
+            style={{ display: "inline-flex", width: `15%`, height: `15%` }}
+          />
+          <Typography variant="h6">
+            Hallo, <b> {account.name && account.name} </b>
+          </Typography>
+          <Typography variant="subtitle1">
+            Selamat datang di website kami
+          </Typography>
+          <Typography variant="subtitle1">{account.email}</Typography>
+        </div>
+      </Paper>
     </Fragment>
   );
   return <div>{account.auth ? Authenticated : LoginForm}</div>;
